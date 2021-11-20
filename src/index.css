@@ -13,6 +13,14 @@ body {
 	overflow-x: hidden;
 }
 
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
 @keyframes arrowBounce {
 	50% {
 		transform: translateY(5px);

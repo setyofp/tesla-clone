@@ -57,24 +57,22 @@ function Home() {
 			title: 'Accessories',
 			description: '',
 			leftBtnText: 'Order Now',
-			rightBtnText: 'Learn More',
 			backgroundImg: 'accessories',
 		},
 	];
 
 	return (
 		<Container>
-			{masterData.map((val) => {
-				return (
-					<Section
-						title={val.title}
-						description={val.description}
-						leftBtnText={val.leftBtnText}
-						rightBtnText={val.rightBtnText}
-						backgroundImg={val.backgroundImg}
-					/>
-				);
-			})}
+			{masterData.map((val) => (
+				<Section
+					key={val.id}
+					title={val.title}
+					description={val.description}
+					leftBtnText={val.leftBtnText}
+					rightBtnText={val.rightBtnText}
+					backgroundImg={val.backgroundImg}
+				/>
+			))}
 		</Container>
 	);
 }
@@ -83,4 +81,5 @@ export default Home;
 
 const Container = styled.div`
 	height: 100vh;
+	width: 100vw;
 `;

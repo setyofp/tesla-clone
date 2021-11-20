@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Fade from 'react-reveal/Fade';
 
 function Section({
 	title,
@@ -11,13 +12,21 @@ function Section({
 	return (
 		<Wrap bgImg={backgroundImg}>
 			<ItemText>
-				<h1>{title}</h1>
-				<p>{description}</p>
+				<Fade bottom>
+					<h1>{title}</h1>
+				</Fade>
+				<Fade bottom>
+					<p>{description}</p>
+				</Fade>
 			</ItemText>
 			<Buttons>
 				<ButtonGroup>
-					<LeftButton>{leftBtnText}</LeftButton>
-					<RightButton>{rightBtnText}</RightButton>
+					<Fade left>
+						<LeftButton>{leftBtnText}</LeftButton>
+					</Fade>
+					<Fade right>
+						{rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+					</Fade>
 				</ButtonGroup>
 				<DownArrow src="/images/down-arrow.svg" />
 			</Buttons>
@@ -37,21 +46,35 @@ const Wrap = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background-image: ${(props) => `url("images/${props.bgImg}.jpg")`};
+	align-items: center;
+	background-image: ${({ bgImg }) => `url("images/${bgImg}.jpg")`};
 `;
 
 const ItemText = styled.div`
-	padding-top: 15vh;
+	padding-top: 10vh;
 	text-align: center;
 	line-height: 1.5;
 	color: #393c41;
+
+	h1 {
+		font-size: 3rem;
+		color: #393c41;
+	}
+
+	p {
+		color: #5c5d61;
+	}
 `;
 
-const Buttons = styled.div``;
+const Buttons = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
 
 const ButtonGroup = styled.div`
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	@media (max-width: 768px) {
 		flex-direction: column;
 		align-items: center;
@@ -82,10 +105,12 @@ const LeftButton = styled.div`
 const RightButton = styled(LeftButton)`
 	background-color: rgba(256, 256, 256, 0.8);
 	color: #121212;
+	opacity: 0.7;
 `;
 
 const DownArrow = styled.img`
 	height: 40px;
 	margin-top: 16px;
+	margin-bottom: 16px;
 	animation: arrowBounce 1s infinite;
 `;
