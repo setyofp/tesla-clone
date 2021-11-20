@@ -162,7 +162,7 @@ const Action = styled.div`
 
 			li:last-child {
 				display: flex;
-				background-color: #7ca3ad9f;
+				background-color: #bababac0;
 			}
 		}
 	}
