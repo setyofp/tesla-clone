@@ -1,6 +1,162 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+const Container = styled.header`
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 0 32px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 48px;
+	z-index: 1;
+
+	@media only screen and (max-width: 768px) {
+		padding: 0 8px;
+	}
+`;
+
+const LogoContainer = styled.div`
+	flex-grow: 1;
+	align-items: center;
+`;
+
+const Logo = styled.img`
+	display: flex;
+	align-items: center;
+	height: 16px;
+	width: 120px;
+`;
+
+const Model = styled.div`
+	justify-content: center;
+	flex-grow: 2;
+	ul {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		li {
+			cursor: pointer;
+			padding: 8px 16px;
+			border-radius: 12px;
+			transition: all 0.5s ease 0s;
+			color: #41454d;
+			font-weight: 600;
+		}
+
+		li:hover {
+			background-color: #bababac0;
+		}
+	}
+
+	@media only screen and (max-width: 1024px) {
+		display: none;
+	}
+`;
+
+const Action = styled.div`
+	/* flex-grow: 1; */
+
+	ul {
+		display: flex;
+
+		li {
+			cursor: pointer;
+			padding: 8px 16px;
+			border-radius: 12px;
+			transition: all 0.5s ease 0s;
+			color: #41454d;
+			font-weight: 600;
+		}
+
+		li:hover {
+			background-color: #bababac0;
+		}
+	}
+
+	@media only screen and (max-width: 1024px) {
+		ul {
+			li {
+				display: none;
+			}
+
+			li:last-child {
+				display: flex;
+				background-color: #bababac0;
+			}
+		}
+	}
+`;
+
+const Menu = styled.div`
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	height: 100vh;
+	transform: ${({ status }) => (status ? `translateX(0)` : `translateX(100%)`)};
+	width: 300px;
+	background-color: #ffffff;
+	padding: 12px 24px;
+	display: flex;
+	flex-direction: column;
+	transition: all 0.5s ease 0s;
+	z-index: 2;
+
+	ul {
+		display: flex;
+		flex-direction: column;
+
+		li {
+			padding: 8px 16px;
+			width: 100%;
+			border-radius: 12px;
+			transition: all 0.5s ease 0s;
+			cursor: pointer;
+			color: #41454d;
+			font-weight: 600;
+		}
+
+		li:hover {
+			background-color: #bababac0;
+		}
+	}
+`;
+
+const CloseButton = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	cursor: pointer;
+	margin: 16px 0;
+`;
+
+const Region = styled.div`
+	display: flex;
+	padding: 8px 16px;
+	border-radius: 12px;
+	margin-top: 8px;
+	cursor: pointer;
+	color: #41454d;
+	font-weight: 600;
+
+	:hover {
+		background-color: #bababac0;
+	}
+`;
+
+const RegionGlobe = styled.div`
+	margin-right: 8px;
+`;
+
+const RegionNation = styled.div`
+	p:last-child {
+		color: #6b6b6bd6;
+	}
+`;
+
 function Header() {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -79,156 +235,3 @@ function Header() {
 }
 
 export default Header;
-
-const Container = styled.header`
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	padding: 0 32px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	min-height: 48px;
-	z-index: 1;
-
-	@media only screen and (max-width: 768px) {
-		padding: 0 8px;
-	}
-`;
-
-const LogoContainer = styled.div`
-	flex-grow: 1;
-	align-items: center;
-`;
-
-const Logo = styled.img`
-	display: flex;
-	align-items: center;
-	height: 16px;
-	width: 120px;
-`;
-const Model = styled.div`
-	justify-content: center;
-	flex-grow: 2;
-	ul {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		li {
-			cursor: pointer;
-			padding: 8px 16px;
-			border-radius: 12px;
-			transition: all 0.5s ease 0s;
-			color: #41454d;
-			font-weight: 600;
-		}
-
-		li:hover {
-			background-color: #bababac0;
-		}
-	}
-
-	@media only screen and (max-width: 1024px) {
-		display: none;
-	}
-`;
-const Action = styled.div`
-	/* flex-grow: 1; */
-
-	ul {
-		display: flex;
-
-		li {
-			cursor: pointer;
-			padding: 8px 16px;
-			border-radius: 12px;
-			transition: all 0.5s ease 0s;
-			color: #41454d;
-			font-weight: 600;
-		}
-
-		li:hover {
-			background-color: #bababac0;
-		}
-	}
-
-	@media only screen and (max-width: 1024px) {
-		ul {
-			li {
-				display: none;
-			}
-
-			li:last-child {
-				display: flex;
-				background-color: #bababac0;
-			}
-		}
-	}
-`;
-
-const Menu = styled.div`
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	height: 100vh;
-	transform: ${({ status }) => (status ? `translateX(0)` : `translateX(100%)`)};
-	width: 300px;
-	background-color: #ffffff;
-	padding: 12px 24px;
-	display: flex;
-	flex-direction: column;
-	transition: all 0.5s ease 0s;
-	z-index: 2;
-
-	ul {
-		display: flex;
-		flex-direction: column;
-
-		li {
-			padding: 8px 16px;
-			width: 100%;
-			border-radius: 12px;
-			transition: all 0.5s ease 0s;
-			cursor: pointer;
-			color: #41454d;
-			font-weight: 600;
-		}
-
-		li:hover {
-			background-color: #bababac0;
-		}
-	}
-`;
-const CloseButton = styled.div`
-	display: flex;
-	justify-content: flex-end;
-	cursor: pointer;
-	margin: 16px 0;
-`;
-
-const Region = styled.div`
-	display: flex;
-	padding: 8px 16px;
-	border-radius: 12px;
-	margin-top: 8px;
-	cursor: pointer;
-	color: #41454d;
-	font-weight: 600;
-
-	:hover {
-		background-color: #bababac0;
-	}
-`;
-
-const RegionGlobe = styled.div`
-	margin-right: 8px;
-`;
-
-const RegionNation = styled.div`
-	p:last-child {
-		color: #6b6b6bd6;
-	}
-`;

@@ -2,44 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 
-function Section({
-	title,
-	description,
-	leftBtnText,
-	rightBtnText,
-	backgroundImg,
-}) {
-	return (
-		<Wrap bgImg={backgroundImg}>
-			<ItemText>
-				<Fade bottom>
-					<h1>{title}</h1>
-				</Fade>
-				<Fade bottom>
-					<p>{description}</p>
-				</Fade>
-			</ItemText>
-			<Buttons>
-				<ButtonGroup>
-					<Fade left>
-						<LeftButton>{leftBtnText}</LeftButton>
-					</Fade>
-					<Fade right>
-						{rightBtnText && <RightButton>{rightBtnText}</RightButton>}
-					</Fade>
-				</ButtonGroup>
-				<DownArrow src="/images/down-arrow.svg" />
-			</Buttons>
-		</Wrap>
-	);
-}
-
-export default Section;
-
 const Wrap = styled.div`
 	width: 100vw;
 	height: 100vh;
-	/* background-image: url('/images/model-s.jpg'); */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -75,6 +40,7 @@ const ButtonGroup = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	@media (max-width: 768px) {
 		flex-direction: column;
 		align-items: center;
@@ -97,6 +63,7 @@ const LeftButton = styled.div`
 	margin: 8px;
 	letter-spacing: 1px;
 	opacity: 0.9;
+
 	@media (max-width: 768px) {
 		width: 300px;
 	}
@@ -114,3 +81,37 @@ const DownArrow = styled.img`
 	margin-bottom: 16px;
 	animation: arrowBounce 1s infinite;
 `;
+
+function Section({
+	title,
+	description,
+	leftBtnText,
+	rightBtnText,
+	backgroundImg,
+}) {
+	return (
+		<Wrap bgImg={backgroundImg}>
+			<ItemText>
+				<Fade bottom>
+					<h1>{title}</h1>
+				</Fade>
+				<Fade bottom>
+					<p>{description}</p>
+				</Fade>
+			</ItemText>
+			<Buttons>
+				<ButtonGroup>
+					<Fade left>
+						<LeftButton>{leftBtnText}</LeftButton>
+					</Fade>
+					<Fade right>
+						{rightBtnText && <RightButton>{rightBtnText}</RightButton>}
+					</Fade>
+				</ButtonGroup>
+				<DownArrow src="/images/down-arrow.svg" />
+			</Buttons>
+		</Wrap>
+	);
+}
+
+export default Section;
